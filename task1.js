@@ -59,10 +59,11 @@ console.log("TASK T1.1");
 arrangeLetters('webmaster');
 
 console.log("TASK T1.2");
+
 array = ["AABBBCCCCCAADDDD", "PPPQRRRSTTQQS", "XYZ"]
 array.forEach(element => {
     RLE(element);
 });
 
 console.log("TASK T1.3");
-console.log(checkTwoNumbersEqualsK([3,2,4,5,1,1,10], 6));
+console.log(checkTwoNumbersEqualsK([10, 15, 3, 7], 17));
