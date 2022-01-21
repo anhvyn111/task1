@@ -11,30 +11,36 @@ function arrangeLetters(letters){
 
 
 
-function RLE(array){
-    array.forEach((letters) => {
-        console.log("Input: " + letters)
-        const map = new Map();
-        let rle = '';
-        for(var i = 0; i < letters.length; i++){
-            if(!map.has(letters[i])){
-                map.set(letters[i], 1);
+
+function RLE(letters){
+    console.log("Input: " + letters);
+    var count = 1;
+    let index = letters[0];
+    var result = "";
+    for (var j = 1; j < letters.length; j++){
+        if(index == letters[j]){
+            count += 1;
+        }
+        else{
+            if(count === 1){
+                result += index;
             }
             else{
-                let amount = map.get(letters[i]);
-                map.set(letters[i], amount + 1);
+                result += count + index;
+            }
+            index = letters[j];
+            count = 1;
+        }
+        if(j === letters.length - 1){
+            if(count === 1){
+                result += index;
+            }
+            else{
+                result += count + index;
             }
         }
-        map.forEach((value, key) => {
-            if(value > 1){
-                rle += value + key;
-            }
-            else{
-                rle += key;
-            }
-        });
-        console.log("Output: " + rle);
-    })    
+    }
+    console.log("Output: " + result);
 }
 
 function checkTwoNumbersEqualsK(numbers, k){
@@ -53,7 +59,10 @@ console.log("TASK T1.1");
 arrangeLetters('webmaster');
 
 console.log("TASK T1.2");
-RLE(["XYZ","TTLLDDKM","EELLLKKK"])
+array = ["AABBBCCCCCAADDDD", "PPPQRRRSTTQQS", "XYZ"]
+array.forEach(element => {
+    RLE(element);
+});
 
 console.log("TASK T1.3");
 console.log(checkTwoNumbersEqualsK([3,2,4,5,1,1,10], 6));
